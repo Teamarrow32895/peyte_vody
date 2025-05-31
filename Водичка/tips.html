@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Советы - Пейте воду</title>
+    <style>
+       
+        
+        :root {
+            --primary-color: #0077b6;
+            --secondary-color: #00b4d8;
+            --light-blue: #b8e0ff;
+            --dark-blue: #005b8c;
+            --white: #ffffff;
+            --light-bg: #f0f9ff;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: var(--light-bg);
+            text-align: center;
+        }
+
+        nav {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            height: 50px;
+            
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        li {
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            padding: 5px;
+            border-radius: 4px;
+        }
+        li:hover {
+            background-color: rgba(0, 180, 216, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.9rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin-right:210px ;
+            margin-top: 5px ;
+           
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+      
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 3rem 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 119, 182, 0.2);
+            height: 800px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.1)" d="M0,0 L100,0 L100,100 Q50,80 0,100 Z"></path></svg>');
+            background-size: 100% 100%;
+            opacity: 0.5;
+        }
+        @keyframes bubble-float {
+            0% { 
+                transform: translateY(0) translateX(0) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            100% { 
+                transform: translateY(-100vh) translateX(20px) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-top: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+        
+        h2:hover::after {
+            width: 100%;
+            background: var(--primary-color);
+        }
+        
+        .tip-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        
+        .tip-number {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 3rem;
+            font-weight: bold;
+            color: rgba(0, 180, 216, 0.1);
+            z-index: 0;
+        }
+        
+        .tip-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        .water-image {
+            margin: 30px 0;
+            transition: all 0.5s ease;
+        }
+        
+        .water-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .water-image img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 119, 182, 0.2);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-blue) 100%);
+            color: var(--white);
+            margin-top: 40px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.8s ease-in-out;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+      
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+ 
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-tint"></i>
+                <span>Пейте воду</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html"> Главная</a></li>
+                <li><a href="benefits.html"> Польза</a></li>
+                <li><a href="tips.html" class="active"> Советы</a></li>
+                <li><a href="science.html">Наука</a></li>
+                <li><a href="faq.html"> Вопросы</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <div class="container">
+                <h1>Практические советы</h1>
+                <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Как пить больше воды каждый день</p>
+            </div>
+        </div>
+    </header>
+    
+   
+    <div class="container">
+        <div class="water-image">
+            <img src="../photo/water5.jpg" alt="Советы по воде">
+        </div>
+        
+        <section class="tip-card">
+            <div class="tip-number">1</div>
+            <div class="tip-icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <h2>Установите напоминания</h2>
+            <p>Используйте технологии, чтобы не забывать пить воду. Установите напоминания на телефоне или скачайте специальное приложение.</p>
+            <p><strong>Как это сделать:</strong></p>
+            <ul style="text-align: left; margin: 15px 0;">
+                <li>Установите будильник каждые 1-2 часа</li>
+                <li>Используйте приложения типа Water Reminder или Hydro Coach</li>
+                <li>Настройте уведомления на умных часах</li>
+                <li>Создайте привычку пить воду в определенное время (после пробуждения, перед едой и т.д.)</li>
+            </ul>
+        </section>
+        
+        <section class="tip-card">
+            <div class="tip-number">2</div>
+            <div class="tip-icon">
+                <i class="fas fa-wine-bottle"></i>
+            </div>
+            <h2>Носите воду с собой</h2>
+            <p>Всегда имейте при себе бутылку воды. Это самый простой способ пить больше в течение дня.</p>
+            <p><strong>Полезные советы:</strong></p>
+            <ul style="text-align: left; margin: 15px 0;">
+                <li>Выберите красивую многоразовую бутылку (стеклянную или из нержавеющей стали)</li>
+                <li>Определите объем, который нужно выпить за день (например, 2 литра = 4 бутылки по 0,5л)</li>
+                <li>Держите бутылку на виду (на столе, в сумке, в машине)</li>
+                <li>Попробуйте бутылку с отметками времени для контроля</li>
+            </ul>
+        </section>
+        
+        <div class="water-image">
+            <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Вода с собой">
+        </div>
+        
+        <section class="tip-card">
+            <div class="tip-number">3</div>
+            <div class="tip-icon">
+                <i class="fas fa-lemon"></i>
+            </div>
+            <h2>Добавьте вкуса</h2>
+            <p>Если вам не нравится вкус простой воды, добавьте натуральные ароматизаторы.</p>
+            <p><strong>Идеи для вкусной воды:</strong></p>
+            <ul style="text-align: left; margin: 15px 0;">
+                <li>Лимон, лайм или апельсин</li>
+                <li>Огурцы и мята</li>
+                <li>Ягоды (клубника, малина, черника)</li>
+                <li>Имбирь и мед</li>
+                <li>Яблоко и корица</li>
+                <li>Арбуз и базилик</li>
+            </ul>
+            <p>Экспериментируйте с сочетаниями, чтобы найти свой любимый вкус!</p>
+        </section>
+        
+        <section class="tip-card">
+            <div class="tip-number">4</div>
+            <div class="tip-icon">
+                <i class="fas fa-utensils"></i>
+            </div>
+            <h2>Свяжите с приемами пищи</h2>
+            <p>Используйте приемы пищи как триггеры для питья воды.</p>
+            <p><strong>Простая система:</strong></p>
+            <ul style="text-align: left; margin: 15px 0;">
+                <li>1 стакан воды сразу после пробуждения</li>
+                <li>1 стакан перед каждым приемом пищи (за 20-30 минут)</li>
+                <li>1 стакан через 30 минут после еды</li>
+                <li>1 стакан перед сном (за 1-2 часа)</li>
+            </ul>
+            <p>Это уже около 2 литров в день при 3-разовом питании!</p>
+        </section>
+        
+        <div class="water-image">
+            <img src="../photo/water6.png" alt="Вода и еда">
+        </div>
+        
+        <section class="tip-card">
+            <div class="tip-number">5</div>
+            <div class="tip-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <h2>Отслеживайте прогресс</h2>
+            <p>Визуализация помогает формировать привычки. Отмечайте каждый выпитый стакан воды.</p>
+            <p><strong>Методы отслеживания:</strong></p>
+            <ul style="text-align: left; margin: 15px 0;">
+                <li>Приложения-трекеры (My Water, WaterMinder)</li>
+                <li>Дневник или чек-лист на холодильнике</li>
+                <li>Бутылка с отметками или мерными делениями</li>
+                <li>Календарь с отметками за каждый день</li>
+                <li>График в Excel или Google Sheets</li>
+            </ul>
+            <p>Поощряйте себя за достижение дневной нормы!</p>
+        </section>
+        
+        <section class="tip-card">
+            <div class="tip-number">6</div>
+            <div class="tip-icon">
+                <i class="fas fa-apple-alt"></i>
+            </div>
+            <h2>Ешьте водянистые продукты</h2>
+            <p>Около 20% дневной нормы воды мы получаем из пищи. Выбирайте продукты с высоким содержанием воды.</p>
+            <p><strong>Топ-8 водянистых продуктов:</strong></p>
+            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin: 20px 0;">
+                <div style="background: rgba(0, 180, 216, 0.1); padding: 10px; border-radius: 8px; min-width: 150px;">
+                    <i class="fas fa-water" style="color: var(--secondary-color);"></i>
+                    <p>Огурцы (96% воды)</p>
+                </div>
+                <div style="background: rgba(0, 180, 216, 0.1); padding: 10px; border-radius: 8px; min-width: 150px;">
+                    <i class="fas fa-water" style="color: var(--secondary-color);"></i>
+                    <p>Арбуз (92%)</p>
+                </div>
+                <div style="background: rgba(0, 180, 216, 0.1); padding: 10px; border-radius: 8px; min-width: 150px;">
+                    <i class="fas fa-water" style="color: var(--secondary-color);"></i>
+                    <p>Клубника (91%)</p>
+                </div>
+                <div style="background: rgba(0, 180, 216, 0.1); padding: 10px; border-radius: 8px; min-width: 150px;">
+                    <i class="fas fa-water" style="color: var(--secondary-color);"></i>
+                    <p>Дыня (90%)</p>
+                </div>
+                <div style="background: rgba(0, 180, 216, 0.1); padding: 10px; border-radius: 8px; min-width: 150px;">
+                    <i class="fas fa-water" style="color: var(--secondary-color);"></i>
+                    <p>Апельсины (88%)</p>
+                </div>
+                <div style="background: rgba(0, 180, 216, 0.1); padding: 10px; border-radius: 8px; min-width: 150px;">
+                    <i class="fas fa-water" style="color: var(--secondary-color);"></i>
+                    <p>Шпинат (91%)</p>
+                </div>
+                <div style="background: rgba(0, 180, 216, 0.1); padding: 10px; border-radius: 8px; min-width: 150px;">
+                    <i class="fas fa-water" style="color: var(--secondary-color);"></i>
+                    <p>Помидоры (94%)</p>
+                </div>
+                <div style="background: rgba(0, 180, 216, 0.1); padding: 10px; border-radius: 8px; min-width: 150px;">
+                    <i class="fas fa-water" style="color: var(--secondary-color);"></i>
+                    <p>Грейпфрут (88%)</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p style="font-size: 1.1rem;">© 2025 Пейте воду. Все права защищены.</p>
+            <p style="font-size: 1.3rem; font-weight: bold;">Маленькие шаги приводят к большим изменениям!</p>
+        </div>
+    </footer>
+    
+    <script>
+       
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+       
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+        window.addEventListener('resize', function() {
+            const bubbles = document.querySelectorAll('.water-bubble');
+            bubbles.forEach(bubble => bubble.remove());
+            createWaterBubbles();
+        });
+     
+    </script>
+</body>
+</html>

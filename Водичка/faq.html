@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вопросы о воде - Пейте воду</title>
+    <style>
+       
+        
+        :root {
+            --primary-color: #0077b6;
+            --secondary-color: #00b4d8;
+            --light-blue: #b8e0ff;
+            --dark-blue: #005b8c;
+            --white: #ffffff;
+            --light-bg: #f0f9ff;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: var(--light-bg);
+            text-align: center;
+        }
+        
+   
+        nav {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            height: 50px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            position: relative;
+            left: -210px;
+            top: -5px;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        li:hover {
+            background-color: rgba(0, 180, 216, 0.1);
+            transform: translateX(5px);
+        }
+        li {
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            padding: 5px;
+            border-radius: 4px;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 3rem 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 119, 182, 0.2);
+            height: 100vh;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: 100% 100%;
+            opacity: 0.5;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+      
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-top: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+        
+        h2:hover::after {
+            width: 100%;
+            background: var(--primary-color);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 30px auto;
+            text-align: left;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .faq-question {
+            background-color: var(--white);
+            padding: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .faq-question i {
+            color: var(--secondary-color);
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            background-color: #f9f9f9;
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 20px;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .water-image {
+            margin: 30px 0;
+            transition: all 0.5s ease;
+        }
+        
+        .water-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .water-image img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 119, 182, 0.2);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-blue) 100%);
+            color: var(--white);
+            margin-top: 40px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.8s ease-in-out;
+            margin-top: 250px;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+      
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-tint"></i>
+                <span>Пейте воду</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Главная</a></li>
+                <li><a href="benefits.html">Польза</a></li>
+                <li><a href="tips.html"> Советы</a></li>
+                <li><a href="science.html"> Наука</a></li>
+                <li><a href="faq.html" class="active"> Вопросы</a></li>
+                <li><a href="contact.html"></i> Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <header>
+        <div class="header-content">
+            <div class="container">
+                <h1>Часто задаваемые вопросы</h1>
+                <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Ответы на самые популярные вопросы о воде</p>
+            </div>
+        </div>
+    </header>
+    
+ 
+    <div class="container">
+        <div class="water-image">
+            <img src="../photo/water8.jpg" alt="Вопросы о воде">
+        </div>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Сколько воды нужно пить в день?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Стандартная рекомендация - 30-35 мл на 1 кг массы тела. Для человека весом 70 кг это около 2-2.5 литров в день. Однако потребность может меняться в зависимости от:</p>
+                    <ul>
+                        <li>Уровня физической активности</li>
+                        <li>Климата и температуры окружающей среды</li>
+                        <li>Состояния здоровья</li>
+                        <li>Беременности или кормления грудью</li>
+                    </ul>
+                    <p>Лучший индикатор - цвет мочи: она должна быть светло-соломенного цвета.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Можно ли пить слишком много воды?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Да, чрезмерное потребление воды (более 4-5 литров за короткий период) может привести к гипонатриемии - опасному состоянию, когда уровень натрия в крови становится слишком низким. Это редко, но возможно, особенно у спортсменов.</p>
+                    <p>Признаки избыточного потребления воды:</p>
+                    <ul>
+                        <li>Частое мочеиспускание (более чем каждые 2 часа)</li>
+                        <li>Прозрачная моча без цвета</li>
+                        <li>Тошнота или рвота</li>
+                        <li>Головная боль</li>
+                        <li>Спутанность сознания</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Что лучше: холодная или теплая вода?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Оба варианта имеют свои преимущества:</p>
+                    <p><strong>Холодная вода (10-15°C):</strong></p>
+                    <ul>
+                        <li>Быстрее усваивается организмом</li>
+                        <li>Помогает охладиться при перегреве</li>
+                        <li>Может слегка ускорять метаболизм</li>
+                    </ul>
+                    <p><strong>Теплая вода (30-40°C):</strong></p>
+                    <ul>
+                        <li>Лучше для пищеварения</li>
+                        <li>Успокаивает горло при простуде</li>
+                        <li>Помогает расслабиться</li>
+                    </ul>
+                    <p>Для повседневного употребления лучше выбирать воду комнатной температуры.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Считается ли чай и кофе в дневную норму воды?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Да, но с оговорками. Хотя чай и кофе содержат воду, они также обладают мочегонным эффектом. Диетологи рекомендуют:</p>
+                    <ul>
+                        <li>Учитывать только 50-70% объема выпитого чая/кофе в дневную норму</li>
+                        <li>Компенсировать каждый стакан кофе дополнительным стаканом воды</li>
+                        <li>Отдавать предпочтение чистой воде как основному источнику жидкости</li>
+                    </ul>
+                    <p>Травяные чаи без кофеина можно учитывать полностью.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Какую воду лучше пить: бутилированную или фильтрованную?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Оба варианта могут быть хороши, если соответствуют стандартам качества. Основные отличия:</p>
+                    <p><strong>Бутилированная вода:</strong></p>
+                    <ul>
+                        <li>Удобна в использовании</li>
+                        <li>Может содержать полезные минералы</li>
+                        <li>Дороже в долгосрочной перспективе</li>
+                        <li>Экологические проблемы из-за пластика</li>
+                    </ul>
+                    <p><strong>Фильтрованная вода:</strong></p>
+                    <ul>
+                        <li>Экономически выгоднее</li>
+                        <li>Экологичнее</li>
+                        <li>Требует регулярной замены фильтров</li>
+                        <li>Качество зависит от исходной воды и типа фильтра</li>
+                    </ul>
+                    <p>Оптимальный вариант - качественный фильтр + стеклянная бутылка для ношения воды с собой.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Правда ли, что нужно пить воду сразу после пробуждения?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Да, это полезная привычка. За ночь организм теряет воду через дыхание и потоотделение. Стакан воды утром:</p>
+                    <ul>
+                        <li>Помогает "разбудить" организм</li>
+                        <li>Запускает метаболизм</li>
+                        <li>Подготавливает пищеварительную систему к завтраку</li>
+                        <li>Компенсирует ночную потерю жидкости</li>
+                    </ul>
+                    <p>Оптимально выпивать 1-2 стакана воды комнатной температуры за 20-30 минут до завтрака.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Можно ли заменить воду другими напитками?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Вода - лучший источник жидкости для организма. Другие напитки не могут полностью ее заменить по нескольким причинам:</p>
+                    <ul>
+                        <li>Содержат добавки (сахар, кофеин, красители)</li>
+                        <li>Могут иметь мочегонный эффект</li>
+                        <li>Часто содержат калории</li>
+                        <li>Не так эффективно утоляют жажду</li>
+                    </ul>
+                    <p>Особенно стоит ограничить:</p>
+                    <ul>
+                        <li>Газированные сладкие напитки</li>
+                        <li>Пакетированные соки</li>
+                        <li>Энергетические напитки</li>
+                        <li>Алкоголь</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Как понять, что я пью недостаточно воды?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Основные признаки обезвоживания:</p>
+                    <ul>
+                        <li>Чувство жажды (уже признак легкого обезвоживания)</li>
+                        <li>Темно-желтый цвет мочи</li>
+                        <li>Сухость во рту и губах</li>
+                        <li>Головная боль</li>
+                        <li>Усталость и головокружение</li>
+                        <li>Редкое мочеиспускание (менее 4 раз в день)</li>
+                        <li>Сухость кожи</li>
+                    </ul>
+                    <p>При появлении этих симптомов увеличьте потребление воды.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p style="font-size: 1.1rem;">© 2025 Пейте воду. Все права защищены.</p>
+            <p style="font-size: 1.3rem; font-weight: bold;">Остались вопросы? Напишите нам!</p>
+        </div>
+    </footer>
+    
+    <script>
+        
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+        
+      
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+        
+   
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+                
+             
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

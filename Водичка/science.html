@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наука о воде - Пейте воду</title>
+    <style>
+        
+        
+        :root {
+            --primary-color: #0077b6;
+            --secondary-color: #00b4d8;
+            --light-blue: #b8e0ff;
+            --dark-blue: #005b8c;
+            --white: #ffffff;
+            --light-bg: #f0f9ff;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: var(--light-bg);
+            text-align: center;
+        }
+
+        nav {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            height: 50px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            position:relative;
+            top: -5px;
+            left: -210px;
+        }
+        li:hover {
+            background-color: rgba(0, 180, 216, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        
+         
+        li {
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            padding: 5px;
+            border-radius: 4px;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 3rem 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 119, 182, 0.2);
+            height: 100vh;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.1)" d="M0,0 L100,0 L100,100 Q50,80 0,100 Z"></path></svg>');
+            background-size: 100% 100%;
+            opacity: 0.5;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-top: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+        
+        h2:hover::after {
+            width: 100%;
+            background: var(--primary-color);
+        }
+        
+        .fact-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+            position: relative;
+        }
+        
+        .fact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        
+        .fact-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        .research-badge {
+            background-color: var(--light-blue);
+            color: var(--dark-blue);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        
+        .water-image {
+            margin: 30px 0;
+            transition: all 0.5s ease;
+        }
+        
+        .water-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .water-image img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 119, 182, 0.2);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-blue) 100%);
+            color: var(--white);
+            margin-top: 40px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.8s ease-in-out;
+            margin: auto;
+            margin-top: 250px;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+   
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-tint"></i>
+                <span>Пейте воду</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Главная</a></li>
+                <li><a href="benefits.html">Польза</a></li>
+                <li><a href="tips.html">Советы</a></li>
+                <li><a href="science.html" class="active"> Наука</a></li>
+                <li><a href="faq.html">Вопросы</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <header>
+        <div class="header-content">
+            <div class="container">
+                <h1>Научные факты о воде</h1>
+                <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Доказанные исследованиями данные о влиянии воды на организм</p>
+            </div>
+        </div>
+    </header>
+    
+
+    <div class="container">
+        <div class="water-image">
+            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Наука о воде">
+        </div>
+        
+        <section class="fact-card">
+            <div class="fact-icon">
+                <i class="fas fa-atom"></i>
+            </div>
+            <h2>Уникальные свойства воды <span class="research-badge">Физика</span></h2>
+            <p>Вода - единственное вещество на Земле, которое естественным образом встречается во всех трех агрегатных состояниях: твердом, жидком и газообразном.</p>
+            <p><strong>Научные факты:</strong></p>
+            <ul style="text-align: left; margin: 15px 0;">
+                <li>Вода имеет аномально высокую теплоемкость - в 5 раз выше, чем у песка</li>
+                <li>Плотность льда меньше плотности воды (что позволяет льду плавать)</li>
+                <li>Вода - универсальный растворитель, способный растворять больше веществ, чем любая другая жидкость</li>
+                <li>Поверхностное натяжение воды - одно из самых высоких среди жидкостей</li>
+            </ul>
+        </section>
+        
+        <section class="fact-card">
+            <div class="fact-icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <h2>Вода и когнитивные функции <span class="research-badge">Нейронаука</span></h2>
+            <p>Исследование, опубликованное в журнале "Frontiers in Human Neuroscience", показало, что употребление воды улучшает когнитивные способности.</p>
+            <p><strong>Результаты исследований:</strong></p>
+            <ul style="text-align: left; margin: 15px 0;">
+                <li>После употребления воды скорость реакции увеличивается на 14%</li>
+                <li>Улучшается рабочая память и концентрация внимания</li>
+                <li>Обезвоживание всего на 1% снижает когнитивные функции на 5%</li>
+                <li>При обезвоживании 2% наблюдается снижение кратковременной памяти</li>
+            </ul>
+            
+        </section>
+        
+        <div class="water-image">
+            <img src="../photo/water8.jpg" alt="Вода и мозг">
+        </div>
+        
+        <section class="fact-card">
+            <div class="fact-icon">
+                <i class="fas fa-heartbeat"></i>
+            </div>
+            <h2>Вода и сердечно-сосудистая система <span class="research-badge">Кардиология</span></h2>
+            <p>Исследование Американского журнала эпидемиологии показало, что люди, выпивающие более 5 стаканов воды в день, имеют на 41% меньший риск сердечного приступа.</p>
+            <p><strong>Ключевые выводы:</strong></p>
+            <ul style="text-align: left; margin: 15px 0;">
+                <li>Достаточное потребление воды снижает вязкость крови</li>
+                <li>Уменьшает нагрузку на сердце</li>
+                <li>Снижает риск ишемической болезни сердца</li>
+                <li>Помогает регулировать кровяное давление</li>
+            </ul>
+            
+        </section>
+        
+        <section class="fact-card">
+            <div class="fact-icon">
+                <i class="fas fa-weight"></i>
+            </div>
+            <h2>Вода и метаболизм <span class="research-badge">Диетология</span></h2>
+            <p>Исследование, опубликованное в "Journal of Clinical Endocrinology and Metabolism", показало, что употребление 500 мл воды увеличивает скорость метаболизма на 30%.</p>
+            <p><strong>Эффекты для обмена веществ:</strong></p>
+            <ul style="text-align: left; margin: 15px 0;">
+                <li>Повышение метаболизма начинается через 10 минут после употребления воды</li>
+                <li>Достигает максимума через 30-40 минут</li>
+                <li>Эффект длится более часа</li>
+                <li>Холодная вода усиливает эффект (организм тратит энергию на нагрев)</li>
+            </ul>
+            
+        </section>
+        
+        <div class="water-image">
+            <img src="../photo/water7.jpg" alt="Вода и метаболизм">
+        </div>
+        
+        <section class="fact-card">
+            <div class="fact-icon">
+                <i class="fas fa-flask"></i>
+            </div>
+            <h2>Химический состав воды <span class="research-badge">Химия</span></h2>
+            <p>Чистая вода (H₂O) состоит из двух атомов водорода и одного атома кислорода, соединенных ковалентной связью.</p>
+            <p><strong>Интересные химические свойства:</strong></p>
+            <ul style="text-align: left; margin: 15px 0;">
+                <li>Молекула воды имеет угловую структуру (104,5° между связями)</li>
+                <li>Вода является амфотерным электролитом</li>
+                <li>pH чистой воды при 25°C равен 7 (нейтральная среда)</li>
+                <li>Вода может быть "тяжелой" (D₂O) с дейтерием вместо водорода</li>
+            </ul>
+        </section>
+        
+        <section class="fact-card">
+            <div class="fact-icon">
+                <i class="fas fa-history"></i>
+            </div>
+            <h2>Эволюционная роль воды <span class="research-badge">Биология</span></h2>
+            <p>Вода была ключевым фактором в возникновении и развитии жизни на Земле.</p>
+            <p><strong>Эволюционные аспекты:</strong></p>
+            <ul style="text-align: left; margin: 15px 0;">
+                <li>Первые живые организмы появились в воде около 3,8 млрд лет назад</li>
+                <li>Человеческий эмбрион на 95% состоит из воды (как медуза)</li>
+                <li>Кровь человека по составу близка к морской воде</li>
+                <li>Тело взрослого человека на 60-70% состоит из воды</li>
+            </ul>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p style="font-size: 1.1rem;">© 2025 Пейте воду. Все права защищены.</p>
+            <p style="font-size: 1.3rem; font-weight: bold;">Наука подтверждает: вода - основа жизни!</p>
+        </div>
+    </footer>
+    
+    <script>
+      
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+        
+    
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+        
+    </script>
+</body>
+</html>
